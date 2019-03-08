@@ -12,7 +12,7 @@ export default class Http {
 
     // this.request = type === 'pc' ? pcRequest : mobileRequest;
 
-    this.request = false ?
+    this.request = process.env.TYPE === 'pc' ?
       require('./pcRequest.js').default :
       require('./mobileRequest.js').default;
   }
