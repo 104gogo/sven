@@ -7,6 +7,7 @@ module.exports = {
     filename: '[name].js',
     path: __dirname + '/dist'
   },
+  devtool: 'source-map', // 去掉eval, 方便查看打包后的代码
   // module: {
   //   rules: [
   //     {
