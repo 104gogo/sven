@@ -8,7 +8,9 @@
 ### 场景
 这个场景来自真实的需求。我们需要提供统一的 Http 类，给 PC 端和移动端使用，要求各个端在打包的时候，不能将不需要的依赖打包进去。所以实验下用动态加载功能。
 
-### 效果
+### 方案
+
+##### 方案1
 dynamic import(动态导入) 需要使用 import()，如下：
 
 ```javascript
@@ -26,12 +28,14 @@ export default class Http {
   }
 }
 ```
-![import](https://github.com/104gogo/sven/raw/master/packages/import/images/import.png)
+![import1](https://github.com/104gogo/sven/raw/master/packages/import/images/import1.png)
 缺陷：
 - 打包结果不太满意，因为 type 是个变量，webpack 不知道该选谁，干脆各打了一个 chunk
 - 而且 import() 的返回值是一个 promise，这样就导致获取到的模块数据是异步的，同步运行代码就会报错，并不能完全满足需求，比如：立即发起请求
 
+##### 方案2
 针对上面两个问题，改进如下：
+
 ```javascript
 export default class Http {
   constructor(type) {
@@ -45,14 +49,33 @@ export default class Http {
   }
 }
 ```
-![require](https://github.com/104gogo/sven/raw/master/packages/import/images/require.png)
+![import2](https://github.com/104gogo/sven/raw/master/packages/import/images/import2.png)
 - 使用环境变量的方式，提前告诉 webpack 该选择哪个包
 - 使用 commonjs 的规范，同步获取依赖包，只有加载完成，才能执行后面的操作
 
-缺陷：es6 和 commonjs 两种模块化混合使用会出现意想不到的问题
+缺陷：es6 和 commonjs 两种模块化混合使用会出现意想不到的问题，即：不要混合使用 import 和 require。
 
-有木有 es6 模块化，像上面同步运行的方法呢？
+##### 方案3
+可以发现 get 方法的返回值是 promise，import() 方法的返回值也是 promise，是不是将 get 方法包一次就好了？
 
+```javascript
+export default class Http {
+  constructor(type) {
+    this.requestPromise = process.env.TYPE === 'pc' ?
+      import(/* webpackChunkName: "pcRequest" */ './pcRequest.js') :
+      import(/* webpackChunkName: "mobileRequest" */ './mobileRequest.js');
+  }
+
+  get(url) {
+    return this.requestPromise.then(({ default: request }) => {
+      return request(url);
+    });
+  }
+}
+```
+![import3](https://github.com/104gogo/sven/raw/master/packages/import/images/import3.png)
+
+这样就完美解决了上面的问题。其实 get 方法是用来发起请求的，获取结果肯定是个异步的过程，所以它和 import() 可以很好的通过 promise 的方式相结合。
 
 
 

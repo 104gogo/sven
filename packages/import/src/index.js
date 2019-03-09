@@ -1,3 +1,4 @@
 import Http from './Http.js';
 
-new Http('mobile').get('https://github.com/104gogo');
+const http = new Http('mobile');
+http.get('https://github.com/104gogo').then(({ data }) => console.log(data));
