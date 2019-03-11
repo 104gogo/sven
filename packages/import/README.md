@@ -3,7 +3,7 @@
 [webpack 代码分离](https://webpack.docschina.org/guides/code-splitting/)
 
 ### 目的
-测试 import 功能
+测试import()动态加载
 
 ### 场景
 假如需要提供统一的 Http 类，给 PC 端和移动端使用，其内容的请求处理逻辑不一样，所以依赖也不同。要求两个端在打包的时候，不能将对方的依赖打进去。所以实验下用动态加载功能。

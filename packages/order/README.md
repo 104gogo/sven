@@ -7,7 +7,7 @@
 用 es6 模块化写的代码，编译为 commonjs 模块化之后，执行顺序是？
 ![result](https://github.com/104gogo/sven/raw/master/packages/order/result.png)
 
-从上图可以看出，被依赖的模块会先执行，import 不管放在那里，都会先被执行，下面分析下打包出来的代码 main.js，看看为什么会这。
+从上图可以看出，被依赖的模块会先执行，import 不管放在那里，都会先被执行，下面分析下打包出来的代码 main.js，看看为什么会这样。
 
 截取入口文件`./src/index.js`的打包代码，发现其中的 import 的代码，被提前到了最上面。
 ```javascript
@@ -42,4 +42,8 @@
 	})
 }
 ```
+
+### 结论
+- import 最好写在模块的最上面。即使写在其他地方，也会被 webpack 给提上来。
+- 被 import 的模块会先被执行
 
