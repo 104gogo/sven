@@ -66,6 +66,6 @@ console.log(__webpack_exports__["default"].obj.count2); // count2 变了
 ```
 
 ### 结论
-export 通过闭包的方式，让外部模块改变内部的变量。
-export default 是值拷贝，外部default和模块内部其实两个同名变量，然后它们的有相同值。但如果它们的值是引用类型，那么就可以修改成功。
+- export 通过闭包的方式，让外部模块改变内部的变量。
+- export default 是值拷贝，外部default和模块内部其实两个同名变量，然后它们的有相同值。但如果它们的值是引用类型，那么就可以修改成功。
 
