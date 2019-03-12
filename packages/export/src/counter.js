@@ -1,7 +1,6 @@
 let count1 = 0;
 function add1() {
   count1 += 1;
-
 }
 
 const obj = { count2: 10 };

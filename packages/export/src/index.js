@@ -1,4 +1,5 @@
 import counter, { count3, add3 } from './counter.js';
+import './other';
 
 // export default 一个值
 console.log(counter.count1); // 0

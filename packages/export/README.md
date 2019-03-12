@@ -6,14 +6,14 @@
 ### export vs export default
 
 ##### export
-export 使用了`__webpack_require__.d`方法，将要导出的变量和方法，通过`Object.defineProperty`的方式，添加在了 exports 上面。
+export 会转成`__webpack_require__.d`方法，将要导出的变量和方法，通过`Object.defineProperty`的方式，添加在了 exports 上面。
 ```javascript
-__webpack_require__.d(__webpack_exports__, "count2", function() { return count2; });
-__webpack_require__.d(__webpack_exports__, "add2", function() { return add2; });
+__webpack_require__.d(__webpack_exports__, "count3", function() { return count3; });
+__webpack_require__.d(__webpack_exports__, "add3", function() { return add3; });
 
-let count2 = 3;
-function add2() {
-  count2 += 1;
+let count3 = 3;
+function add3() {
+  count3 += 1;
 }
 
 __webpack_require__.d = function(exports, name, getter) {
@@ -23,8 +23,10 @@ __webpack_require__.d = function(exports, name, getter) {
 };
 ```
 关键点在 getter，它将模块内部的变量闭包住了，所以外部改变的其实是内部的变量，而不像 export default 是两个不同的变量。
-##### export default
 
+另外，export 不能导出普通对象。
+
+##### export default
 export default 会将导出的方法或者变量放在 exports 的 default 上，如下：
 ```javascript
 let count1 = 0;
@@ -63,6 +65,15 @@ console.log(__webpack_exports__["default"].count1); // count1 没变
 ```javascript
 __webpack_exports__["default"].add2();
 console.log(__webpack_exports__["default"].obj.count2); // count2 变了
+```
+
+值得注意的是，export default 导出一个普通对象的时候，会将这个对象赋值给`__webpack_exports__["default"]`，其他时候和 export 表现一致，使用`__webpack_require__.d`方法导出。如下：
+```javascript
+export default class Http {}
+```
+```javascript
+__webpack_require__.d(__webpack_exports__, "default", function() { return Http; });
+class Http {}
 ```
 
 ### 结论
