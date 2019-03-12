@@ -67,13 +67,25 @@ __webpack_exports__["default"].add2();
 console.log(__webpack_exports__["default"].obj.count2); // count2 变了
 ```
 
-值得注意的是，export default 导出一个普通对象的时候，会将这个对象赋值给`__webpack_exports__["default"]`，其他时候和 export 表现一致，使用`__webpack_require__.d`方法导出。如下：
+值得注意的是
+- export 后面只能是一个表达式，不能是对象或者变量名
+- export default 后面如果是表达式，那么它和 export 处理方式一致，使用`__webpack_require__.d`方法导出
+- export default 后面如果是一个对象或变量名，那么它使用`__webpack_exports__["default"]`的方式导出
+
 ```javascript
 export default class Http {}
 ```
 ```javascript
 __webpack_require__.d(__webpack_exports__, "default", function() { return Http; });
 class Http {}
+```
+```javascript
+class Http {}
+export default Http;
+```
+```javascript
+class Http {}
+__webpack_exports__["default"] = (Http);
 ```
 
 ### 结论
