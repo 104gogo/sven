@@ -18,9 +18,9 @@
 npm i
 npm link
 ```
-再到 esm2 路径下，运行`sven-lib`  
+然后到 esm2 路径下，运行`sven-lib`  
 
-然后在 dist 目录中可以看到生成出了 esm 和 cjs 模块的文件
+最后可以看到生成出了 esm 和 cjs 模块的文件
 
 ### 参考
 [umi-library](https://github.com/umijs/umi/blob/master/packages/umi-library/README.md)
