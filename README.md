@@ -1,5 +1,10 @@
 # sven
-测试 webpack 各种使用情况
+webpack & rollup
+
+## 安装
+```
+npm i
+```
 
 ## 运行
 ```
