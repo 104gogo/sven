@@ -1,5 +1,5 @@
 # sven
-测试 webpack 各种使用情况
+测试 webpack & rollup & babel 各种使用情况
 
 ## 运行
 ```
