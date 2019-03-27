@@ -1,9 +1,9 @@
-# treeShaking
+# tree-shaking
 
-### 目的
-测试 esm 模块使用 treeShaking 的效果
+## 目的
+测试 tree-shaking
 
-### 参考
+## 参考
 [webpack tree shaking](https://webpack.docschina.org/guides/tree-shaking/)
 我们已经知道，想要使用 tree shaking 必须注意以下……
 

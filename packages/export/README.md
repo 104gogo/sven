@@ -1,9 +1,9 @@
 # export
 
-### 目的
+## 目的
 测试模块 export 变量被修改的情况
 
-### export vs export default
+## export vs export default
 
 ##### export
 export 会转成`__webpack_require__.d`方法，将要导出的变量和方法，通过`Object.defineProperty`的方式，添加在了 exports 上面。
@@ -88,7 +88,7 @@ class Http {}
 __webpack_exports__["default"] = (Http);
 ```
 
-### 结论
+## 结论
 这里我们得到了两种导出方式
 - `__webpack_require__.d`通过闭包的方式，让外部改变模块内部的变量。
 - `__webpack_exports__["default"]`是值拷贝的方式，外部 default 和模块内部其实两个同名变量，然后它们的有相同值。但如果它们的值是引用类型，那么就可以修改成功。

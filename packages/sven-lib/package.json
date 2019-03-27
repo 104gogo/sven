@@ -1,17 +1,18 @@
 {
-  "name": "esm2",
+  "name": "sven-lib",
   "version": "1.0.0",
+  "bin": "./bin/sven-lib.js",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "rimraf lib es && rollup -c",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "rimraf": "^2.6.3",
-    "rollup": "^1.6.0"
+    "@babel/core": "^7.3.4",
+    "rollup": "^1.6.0",
+    "rollup-plugin-babel": "^4.3.2"
   }
 }

@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 const fs = require('fs');
 const path = require('path');
-const shell = require('shelljs');
 const inquirer = require('inquirer');
+const { spawn } = require('child_process');
 
 (async () => {
   const cwd = process.cwd();
@@ -21,13 +21,12 @@ const inquirer = require('inquirer');
     },
   ];
 
-  try {
-    const { package } = await inquirer.prompt(list);
+  const { package } = await inquirer.prompt(list);
 
-    shell.exec(`lerna run build ${package === 'all' ? '' : `--scope ${package}`}`);
-  } catch (e) {
-    console.log(e.message);
-    process.exit(1);
-  }
+  spawn(
+    'lerna',
+    package !== 'all' ? ['run', 'build', '--scope', `${package}`] : ['run', 'build'],
+    { stdio: 'inherit' }
+  );
 })();
 

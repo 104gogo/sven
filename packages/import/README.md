@@ -2,10 +2,10 @@
 
 [webpack 代码分离](https://webpack.docschina.org/guides/code-splitting/)
 
-### 目的
+## 目的
 测试 import() 动态加载
 
-### 场景
+## 场景
 假如需要提供统一的 Http 类，给 PC 端和移动端使用，其内容的请求处理逻辑不一样，所以依赖也不同。要求两个端在打包的时候，不能将对方的依赖打进去。所以实验下用动态加载功能。
 
 Http 类预计的使用方式如下：
@@ -16,7 +16,7 @@ const http = new Http(options);
 http.get('https://github.com/104gogo').then(({ data }) => console.log(data));
 ```
 
-### 方案
+## 方案
 从 import 基础的使用方式，到最后测试成功，经历了下面3种方式。
 
 ##### 方案1
@@ -88,10 +88,10 @@ export default class Http {
 
 缺陷：需要添加一个全局变量
 
-### import() 的原理
+## import() 的原理
 
 
-### 待验证
+## 待验证
 [tree shaking](https://webpack.docschina.org/guides/tree-shaking)
 
 

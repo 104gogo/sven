@@ -1,18 +1,13 @@
 {
-  "name": "sven-lib",
+  "name": "esm3",
   "version": "1.0.0",
-  "bin": "./bin/sven-lib.js",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "rimraf lib && babel src --out-dir lib",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@babel/core": "^7.3.4",
-    "rollup": "^1.6.0",
-    "rollup-plugin-babel": "^4.3.2"
-  }
+  "license": "ISC"
 }
