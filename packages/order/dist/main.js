@@ -86,57 +86,83 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/counter.js":
-/*!************************!*\
-  !*** ./src/counter.js ***!
-  \************************/
-/*! exports provided: count2, add2, default */
+/***/ "./src/add.js":
+/*!********************!*\
+  !*** ./src/add.js ***!
+  \********************/
+/*! exports provided: add */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-  "use strict";
-  __webpack_require__.r(__webpack_exports__);
-  /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "count2", function() { return count2; });
-  /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "add2", function() { return add2; });
-  let count1 = 0;
-  function add1() {
-    count1 += 1;
-  }
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "add", function() { return add; });
+console.log('加载了 add 模块');
 
-  let count2 = 3;
-  function add2() {
-    count2 += 1;
-  }
-
-  /* harmony default export */ __webpack_exports__["default"] = ({
-    count1,
-    add1
-  });
+const add = function(x, y) {
+  return x + y;
+};
 
 
-  /***/ }),
+/***/ }),
 
-  /***/ "./src/index.js":
-  /*!**********************!*\
-    !*** ./src/index.js ***!
-    \**********************/
-  /*! no exports provided */
-  /***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-  "use strict";
-  __webpack_require__.r(__webpack_exports__);
-  /* harmony import */ var _counter_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./counter.js */ "./src/counter.js");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _add_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./add.js */ "./src/add.js");
+/* harmony import */ var _square_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./square.js */ "./src/square.js");
+
+console.log(Object(_add_js__WEBPACK_IMPORTED_MODULE_0__["add"])(1, 1));
 
 
-  // export default，值不会变
-  console.log(_counter_js__WEBPACK_IMPORTED_MODULE_0__["default"].count1); // 0
-  _counter_js__WEBPACK_IMPORTED_MODULE_0__["default"].add1();
-  console.log(_counter_js__WEBPACK_IMPORTED_MODULE_0__["default"].count1); // 0
+console.log(Object(_square_js__WEBPACK_IMPORTED_MODULE_1__["square"])(3));
 
-  // export 出来可以被外部修改
-  console.log(_counter_js__WEBPACK_IMPORTED_MODULE_0__["count2"]); // 3
-  Object(_counter_js__WEBPACK_IMPORTED_MODULE_0__["add2"])();
-  console.log(_counter_js__WEBPACK_IMPORTED_MODULE_0__["count2"]); // 4
+/***/ }),
 
-  /***/ })
+/***/ "./src/multiply.js":
+/*!*************************!*\
+  !*** ./src/multiply.js ***!
+  \*************************/
+/*! exports provided: multiply */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-  /******/ });
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "multiply", function() { return multiply; });
+console.log('加载了 multiply 模块');
+
+const multiply = function(x, y) {　
+  return x * y;
+};
+
+
+/***/ }),
+
+/***/ "./src/square.js":
+/*!***********************!*\
+  !*** ./src/square.js ***!
+  \***********************/
+/*! exports provided: square */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "square", function() { return square; });
+/* harmony import */ var _multiply_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./multiply.js */ "./src/multiply.js");
+console.log('加载了 square 模块');
+
+
+
+const square = function(num) {　
+  return Object(_multiply_js__WEBPACK_IMPORTED_MODULE_0__["multiply"])(num, num);
+};
+
+
+/***/ })
+
+/******/ });

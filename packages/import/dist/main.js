@@ -205,57 +205,59 @@
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-  "use strict";
-  __webpack_require__.r(__webpack_exports__);
-  /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Http; });
-  // import pcRequest from './pcRequest.js';
-  // import mobileRequest from './mobileRequest.js';
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// import pcRequest from './pcRequest.js';
+// import mobileRequest from './mobileRequest.js';
 
-  class Http {
-    constructor(type) {
-      // const requestPromise = type === 'pc' ?
-      //   import(/* webpackChunkName: "pcRequest" */ './pcRequest.js') :
-      //   import(/* webpackChunkName: "mobileRequest" */ './mobileRequest.js');
+class Http {
+  constructor(type) {
+    // const requestPromise = type === 'pc' ?
+    //   import(/* webpackChunkName: "pcRequest" */ './pcRequest.js') :
+    //   import(/* webpackChunkName: "mobileRequest" */ './mobileRequest.js');
 
-      //   requestPromise.then(request => this.request = request);
+    //   requestPromise.then(request => this.request = request);
 
 
-      // this.request = type === 'pc' ? pcRequest : mobileRequest;
+    // this.request = type === 'pc' ? pcRequest : mobileRequest;
 
-      // this.request = process.env.TYPE === 'pc' ?
-      //   require('./pcRequest.js').default :
-      //   require('./mobileRequest.js').default;
+    // this.request = process.env.TYPE === 'pc' ?
+    //   require('./pcRequest.js').default :
+    //   require('./mobileRequest.js').default;
 
-      this.requestPromise =  false ?
-        undefined :
-        __webpack_require__.e(/*! import() | mobileRequest */ "mobileRequest").then(__webpack_require__.bind(null, /*! ./mobileRequest.js */ "./src/mobileRequest.js"));
-    }
-
-    get(url) {
-      return this.requestPromise.then(({ default: request }) => {
-        return request(url);
-      });
-    }
+    this.requestPromise =  false ?
+      undefined :
+      __webpack_require__.e(/*! import() | mobileRequest */ "mobileRequest").then(__webpack_require__.bind(null, /*! ./mobileRequest.js */ "./src/mobileRequest.js"));
   }
 
-  /***/ }),
+  get(url) {
+    return this.requestPromise.then(({ default: request }) => {
+      return request(url);
+    });
+  }
+}
 
-  /***/ "./src/index.js":
-  /*!**********************!*\
-    !*** ./src/index.js ***!
-    \**********************/
-  /*! no exports provided */
-  /***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-  "use strict";
-  __webpack_require__.r(__webpack_exports__);
-  /* harmony import */ var _Http_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Http.js */ "./src/Http.js");
+/* harmony default export */ __webpack_exports__["default"] = (Http);
 
 
-  const http = new _Http_js__WEBPACK_IMPORTED_MODULE_0__["default"]('mobile');
-  http.get('https://github.com/104gogo').then(({ data }) => console.log(data));
+/***/ }),
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Http_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Http.js */ "./src/Http.js");
 
 
-  /***/ })
+const http = new _Http_js__WEBPACK_IMPORTED_MODULE_0__["default"]('mobile');
+http.get('https://github.com/104gogo').then(({ data }) => console.log(data));
 
-  /******/ });
+
+/***/ })
+
+/******/ });
