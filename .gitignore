@@ -6,9 +6,10 @@ npm-debug.log
 .bat
 debug.log
 yarn-error.log
-dist/
 **/bundle.js
-/lib
+dist/
+lib/
+es/
 package-lock.json
 .DS_Store
 

@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "bootstrap": "lerna bootstrap",
     "build": "node ./scripts/build.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -31,6 +32,9 @@
     "inquirer": "^6.2.2",
     "lerna": "^3.13.1",
     "rimraf": "^2.6.3",
+    "rollup": "^1.7.4",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-node-resolve": "^4.0.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3"
   }
