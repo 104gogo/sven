@@ -42,8 +42,8 @@ tree shaking 原理如下：
 在 **src1目录** 中，使用《[你的Tree-Shaking并没什么卵用](https://juejin.im/post/5a5652d8f265da3e497ff3de)》文章中最开始的代码，来验证 tree shaking 功能，打包结果如下：
 
 | webpack | rollup |
-|     :---:      |     :---:      |
-| ![Alt text](./1554040160591.png)     | ![Alt text](./1554040027060.png)    |
+|     :---      |     :---      |
+| ![src1Webpack](https://github.com/104gogo/sven/raw/master/packages/treeShaking/images/src1-webpack.png)     | ![src1Rollup](https://github.com/104gogo/sven/raw/master/packages/treeShaking/images/src1-rollup.png)    |
 
 可以看到，在两种打包工具处理之后，Person Class 都被去掉了。
 
