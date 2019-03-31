@@ -1,7 +1,4 @@
-import { Apple } from './components';
+import Http from './Http.js';
 
-const appleModel = new Apple({
-  model: 'IphoneX'
-}).getModel();
-
-console.log(appleModel);
+const http = new Http('mobile');
+http.get('https://github.com/104gogo').then(({ data }) => console.log(data));
